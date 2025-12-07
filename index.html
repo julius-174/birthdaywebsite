@@ -1,40 +1,205 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WS playground</title>
-  <link rel="stylesheet" href="/style.css">
+  <meta charset="UTF-8">
+  <title>Ello</title>
+  <link rel="stylesheet" href="amritawebsite0.css">
+
+  <style>
+      /* Sparkle style (UNCHANGED) */
+      .sparkle {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background: #f13434;
+          border-radius: 50%;
+          pointer-events: none;
+          opacity: 0.9;
+          z-index: 9999;
+          box-shadow: 0 0 6px #bf3f3f;
+          animation: sparkleFade 0.6s ease-out forwards;
+      }
+
+      @keyframes sparkleFade {
+          0% { transform: scale(1); opacity: 1; }
+          100% { transform: scale(1.8); opacity: 0; }
+      }
+
+      .error {
+          color: red;
+          margin-top: 10px;
+      }
+
+      /* =================================== */
+      /* 🚧 NEW WARNING PAGE STYLING         */
+      /* =================================== */
+
+      #warningPage {
+          position: fixed;
+          inset: 0;
+          background: #fff8c4;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          z-index: 999999;
+          font-family: Arial, sans-serif;
+          text-align: center;
+          animation: fadeIn 1s ease-out;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+      }
+
+      /* Flashing + shaking caution icons */
+      .caution {
+          font-size: 65px;
+          margin-bottom: 20px;
+          animation: flash 1s infinite, shake 0.4s infinite;
+      }
+
+      @keyframes flash {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.2; }
+      }
+
+      @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          25% { transform: translateX(-8px); }
+          75% { transform: translateX(8px); }
+      }
+
+      #warningPage h1 {
+          font-size: 40px;
+          margin-bottom: 10px;
+          animation: flash 2s infinite;
+      }
+
+      /* Oki hehe button */
+      #continueBtn {
+          padding: 14px 30px;
+          border: none;
+          background: #ffd400;
+          border-radius: 12px;
+          cursor: pointer;
+          font-size: 22px;
+          transition: 0.3s;
+          box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+
+      #continueBtn:hover {
+          background: #ffbf00;
+          transform: scale(1.1);
+      }
+
+      /* Fade transition for revealing real page */
+      #realPage {
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+      }
+  </style>
 </head>
+
 <body>
-<header class="logo">
-  <a href="https://www.jetbrains.com/webstorm/">
-    <img src="/webstorm-logo.svg" alt="WebStorm logo" width="344"
-         height="90">
-  </a>
-</header>
-<main id="app">
-  <h1 class="title">
-    Thank you for trying it out. <br /> Your first project is up and running
-    now.
-  </h1>
-  <section class="counter">
-    <div class="counter-info">
-      <p class="counter-text">Counter is</p>
-      <p class="counter-value" id="counter-value"></p>
-    </div>
-    <div class="counter-interaction">
-      <button id="increaseByOne" type="button">+1</button>
-      <button id="increaseByTwo" type="button">+2</button>
-      <button id="decreaseByOne" type="button">-1</button>
-      <button id="decreaseByTwo" type="button">-2</button>
-    </div>
-  </section>
-</main>
-<footer class="technologies">
-  <img src="/technologies.svg" alt="List of supported technologies">
-</footer>
-<script type="module" src="/src/main.js"></script>
+
+<!-- 🔊 ADDED AUDIO (ONLY NEW THING) -->
+<audio id="song">
+  <source src="Tame%20Impala%20%20-The%20Less%20I%20Know%20the%20Better%20(Instrumental).mp3" type="audio/mpeg">
+</audio>
+
+<!-- ===================== -->
+<!-- 🚧 ANIMATED WARNING PAGE -->
+<!-- ===================== -->
+<div id="warningPage">
+  <div class="caution">⚠️⚠️⚠️⚠️⚠️</div>
+  <h1>Do you wish to continue?</h1>
+  <div class="caution">⚠️⚠️⚠️⚠️⚠️</div>
+  <button id="continueBtn">oki hehe</button>
+</div>
+
+<!-- ================================== -->
+<!-- YOUR ORIGINAL PAGE (UNTOUCHED)     -->
+<!-- ================================== -->
+<div id="realPage" style="display:none;">
+
+  <img class="loginbg1" src="loginbg1.jpeg">
+  <img class="loginbg2" src="loginbg2.jpeg">
+  <img class="hearts" src="https://media.tenor.com/_I6ysFj9dn0AAAAm/heart.webp">
+  <img class="hearts1" src="https://media.tenor.com/_I6ysFj9dn0AAAAm/heart.webp">
+  <img class="walk" src="https://media.tenor.com/2KdFBFzRFF4AAAAm/kirby-dance.webp">
+  <img class="dance1" src="https://media.tenor.com/FtskoCrIAt8AAAAj/toothless-dance.gif">
+  <img class="dance2" src="https://media.tenor.com/NrvI8IElDK8AAAAm/gog-alien.webp">
+
+  <button id="submit" class="submit">Submit</button>
+
+  <div class="input-wrapper">
+    <h1 class="enterpass">Enter Password</h1>
+    <img src="https://media.tenor.com/bKcJpxp5SsIAAAAm/tontonfriends-tonton.webp">
+    <input type="text" placeholder="Enter here" class="password" id="password">
+    <button class="login">Login</button>
+    <div id="err" class="error"></div>
+  </div>
+
+</div><!-- end realPage -->
+
+<script>
+  /* ===========================================
+     SHOW REAL PAGE WITH FADE TRANSITION
+  ============================================ */
+  document.getElementById("continueBtn").addEventListener("click", function () {
+
+    // 🔊 PLAY SONG (ONLY NEW CODE)
+    document.getElementById("song").play();
+
+    const wp = document.getElementById("warningPage");
+    const rp = document.getElementById("realPage");
+
+    wp.style.opacity = "0";
+    wp.style.transition = "opacity 0.8s";
+
+    setTimeout(() => {
+      wp.style.display = "none";
+      rp.style.display = "block";
+
+      // allow CSS transition to apply
+      setTimeout(() => {
+        rp.style.opacity = "1";
+      }, 50);
+    }, 800);
+  });
+
+  // PASSWORD LOGIC (unchanged)
+  document.getElementById("submit").addEventListener("click", function () {
+    const correctPassword = "birthday123";
+    const userInput = document.getElementById("password").value.trim();
+    const err = document.getElementById("err");
+
+    if (userInput === correctPassword) {
+      window.location.href = "amritawebsite1.html";
+    } else {
+      err.textContent = "Incorrect password. Try again.";
+    }
+  });
+
+  // MOUSE SPARKLES (unchanged)
+  document.addEventListener("mousemove", function (e) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    document.body.appendChild(sparkle);
+
+    sparkle.style.left = `${e.clientX}px`;
+    sparkle.style.top = `${e.clientY}px`;
+
+    sparkle.style.background = `hsl(${Math.random() * 360}, 100%, 85%)`;
+    sparkle.style.transform = `translate(-50%, -50%) scale(${0.8 + Math.random() * 0.5})`;
+
+    sparkle.addEventListener("animationend", () => {
+      sparkle.remove();
+    });
+  });
+</script>
+
 </body>
 </html>
