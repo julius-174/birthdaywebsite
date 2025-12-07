@@ -1,0 +1,35 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make sure html and body take full height */
+html, body {
+    height: 100%;
+}
+
+/* Apply linear gradient background to the entire page */
+body {
+    /* Full viewport height */
+    min-height: 100vh;
+
+    /* Linear gradient from top (#ffb6b9) to bottom (#fae3d9) */
+    background-image: linear-gradient(to bottom, #ffb6b9, #fae3d9);
+
+    /* Optional: set a fallback background color for old browsers */
+    background-color: #ffb6b9;
+
+    /* Optional: ensure the background covers the whole area */
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Set font and text color (optional) */
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.P{
+    font-size: 30px;
+}

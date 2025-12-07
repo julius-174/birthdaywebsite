@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contained Text Page</title>
+  <link rel="stylesheet" href="final.css" ></link>
+
+  <style>
+      html, body {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          width: 100%;
+          box-sizing: border-box;
+          overflow: hidden;
+          font-family: sans-serif;
+      }
+
+      /* 🔒 Hide main content initially */
+      #mainContent {
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.8s ease;
+      }
+
+      /* 🟣 Intro overlay */
+      #introOverlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.85);
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-size: 2rem;
+          cursor: pointer;
+          z-index: 9999;
+          transition: opacity 0.8s ease;
+      }
+
+      #introOverlay.hidden {
+          opacity: 0;
+          pointer-events: none;
+      }
+
+      .container {
+          padding: 20px;
+          overflow: auto;
+          height: 100vh;
+          box-sizing: border-box;
+      }
+  </style>
+</head>
+
+<body>
+
+<!-- INTRO OVERLAY -->
+<div id="introOverlay">Ok, this is fr the end hehe</div>
+
+<!-- MAIN CONTENT -->
+<div id="mainContent">
+  <div class="container">
+    <h1>The end</h1>
+    <div class="P"><p>
+      Hey. So, I was wondering how to end this. I had ideas ranging from making a game for you which was basically an endless ocean boat simulator with crazy good graphics and stuff, as a way for you to relax or something, or an entire virtual library or something, but they all just didnt seem to fit uk. totally not because i didnt want to put in so much effort aha. But yeah, I was wondering. And then I thought about how its kind of become an unofficial unspoken custom of ours to send each other a nais little message to each other for our birthdays, so why not? So, here it is. You've reached the end. I hope you know I dont just not expect you to do something like this, I dont want you to. Whats that line that goes about how a guy who writes a poem for you loves you, a guy who writes a 100 poems for you loves writing poems. Well, I love doing things for you. Even if i dont do them nearly enough. You are, without a doubt, one of the people i love the most. You've been there for me when i neither asked for it, nor did i deserve it. I dont care what happens to you, whether you become an absolute loser or what, I'll always be there for you, no matter what. You can lose everyone you've ever known, but you cant lose me. You can develop amnesia and I'll just harass you and remind you everyday about how you actually owe me 20 nudes. You straight up arent getting rid of me ok. Lowkey a threat ngl. But yes. I suppose there really isnt much i can say that i havent told you already. Even though you're lowkey one of the worst persons to me in the entire entire world i still love u oki. And i dont care if you know it already, I'm gonna keep reminding you that you can always come to me, for anything at all, and I'll be here for you, no matter how badly you fucked something up. But anyway. I've been working on this for quite a while. You might remember back when I'd say i'm working on a project, this was it. Ab vo to hai nhi ki uske liye banau, to tere liye hi banana padega na😅😅😅
+      <p>
+        But no. I made this for you ok. Not as a replacement or whatever. I've said this before, and I'll say it now too. I've chosen you over others in the past, and I always will. Even if you're a mega whore who doesnt listen to me because youre literally evil and are cruel and literally the devil reincarnated. You owe me so much my god. Istg if i dont get to vasoolo na bkl. But ya. totally didnt make all this to make ur friends jealous aha. ahahhahaha. aaahahaha.
+      </p>
+      </p>
+      <p>
+        Chalo bhai. Its been a while since we've met. Prolly will be a much longer while before we actually do meet ngl. Uk I'll probably finish this way before your birthday. God I hope I have the patience to actually wait for ur birthday lmao. And I hope i dont let it slip to u actually. Im such an attention whore itll be so tough dude. Im writing this on 25 september. at like 4:05pm. god i have to go to class at 4:30. I have a test and me ye kar rha💀💀💀💀
+      </p>
+      <p>
+        ok its 7th dec now, and its like 7:30pm. gotta go have dinner soon. i lowkey shouldve studied for that test instead ngl. I'm pretty much done with this project now. gotta just do a lil bit here and there and done. finally bhai. took waylonger than i thought it would, mostly coz i kept getting ideas idhar udhar. lowkey still not impressed with the result ngl but ab kya kr skte hai koini. u r an evil whore who replies to me like 50 hours after. i lowkey cant believe im doign this for u bc can u imagine if i did this for some random girl i prolly wouldnt even be a virgin by now bc. par chalo koini. istg if u dont become upsc. and also start replying faster to me u fking whore. par haa. take care oki. and u better tell me this was literally the best thing uve ever gotten and also tell ur friends this was the best thing uve ever gotten and tell everyone and show everyone and make sure to tell thme im not into u at all so that they think im a really nice caring guy who is single and i can get a baddie oki bai bai take care happy birthday aha muah
+      </p>
+    </div>
+  </div>
+</div>
+  <!-- AUDIO -->
+  <audio id="backgroundSong" src="ik%20kudi%20(arpit%20balas%20part)%20@wolf.cryman%20@arpitbaala.mp3"></audio> <!-- Put your downloaded song in same folder -->
+
+  <script>
+    const overlay = document.getElementById("introOverlay");
+    const mainContent = document.getElementById("mainContent");
+    const song = document.getElementById("backgroundSong");
+
+    overlay.addEventListener("click", () => {
+      overlay.classList.add("hidden");       // hide overlay
+      mainContent.style.opacity = "1";       // show content
+      mainContent.style.pointerEvents = "auto";
+      document.body.style.overflow = "auto"; // allow scrolling
+      song.play();                            // play your downloaded song
+    });
+  </script>
+
+</body>
+</html>
