@@ -1,0 +1,200 @@
+/* -------- TERMS SCREEN -------- */
+
+#agree {
+    display: none;
+}
+
+#termsScreen {
+    position: fixed;
+    inset: 0;
+    background: #000000e8;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999;
+    font-family: Arial, sans-serif;
+}
+
+#termsBox {
+    background: #111;
+    border: 3px solid #ff7ae6;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+}
+
+#agreeLabel {
+    display: block;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Hide terms when checkbox is checked */
+#agree:checked ~ #termsScreen {
+    display: none;
+}
+
+#agree:not(:checked) ~ #actualContent {
+    display: none;
+}
+
+/* -------- YOUR ORIGINAL STYLES (UNCHANGED) -------- */
+
+body {
+    background-color: black;
+}
+
+#toggle2 {
+    display: none;
+}
+
+h1 {
+    position: absolute;
+    left: 19%;
+    width: 1200px;
+    font-weight: bolder;
+    font-family: "MV Boli", serif;
+    color: deepskyblue;
+}
+
+.p1 {
+    width: 250px;
+    height: 30px;
+    position: absolute;
+    right: 60px;
+    top: 200px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: "Times New Roman", Times, serif;
+    color: white;
+    padding: 5px;
+    background-color: red;
+    z-index: 9999;
+}
+
+.liveamritareaction {
+    position: absolute;
+    right: 58px;
+    top: 230px;
+    width: 250px;
+    height: 300px;
+    border-style: solid;
+}
+
+.siren {
+    position: absolute;
+    right: 130px;
+    top: 110px;
+}
+
+.dancingrat {
+    position: absolute;
+    left: 30%;
+    top: 160px;
+}
+
+.page2img1sam {
+    position: absolute;
+    top: 290px;
+    left: 13%;
+    width: 300px;
+    height: 420px;
+    z-index: 9999;
+}
+
+.btn2 {
+    position: absolute;
+    left: 45%;
+    top: 300px;
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 30px;
+    background: darkslateblue;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-family: sans-serif;
+}
+
+#termsImage {
+    width: 250px;       /* change if you want bigger/smaller */
+    border-radius: 10px;
+    margin: 15px 0;
+    border: 3px solid hotpink;
+}
+
+
+.judgy {
+    position: absolute;
+    top: 30%;
+    right: 26%;
+}
+
+.itachi {
+    top: 40%;
+    left: 40%;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+/* --- TERMS SCREEN --- */
+
+#agree {
+    display: none;
+}
+
+/* Overlay */
+#termsScreen {
+    position: fixed;
+    inset: 0;
+    background: #000000f0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    font-family: Arial, sans-serif;
+}
+
+/* Terms box */
+#termsBox {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    border: 3px solid #ff7ae6;
+    width: 450px;
+    text-align: center;
+}
+
+/* Checkbox label */
+.agreeLabel {
+    font-size: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.agreeLabel input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    accent-color: hotpink;
+}
+
+/* Hide terms when checked */
+#agree:checked ~ #termsScreen {
+    display: none;
+}
+
+/* Hide content until checked */
+#agree:not(:checked) ~ #actualContent {
+    display: none;
+}

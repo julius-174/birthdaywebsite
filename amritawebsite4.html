@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cinematic Quiz Experience</title>
+
+  <style>
+      /* ---------------------- GLOBAL AESTHETIC ---------------------- */
+      body {
+          margin: 0;
+          padding: 0;
+          height: 100vh;
+          font-family: "Poppins", sans-serif;
+          overflow: hidden;
+
+          background: linear-gradient(135deg, #1a0023, #2a0040, #180052, #350040);
+          background-size: 300% 300%;
+          animation: bgShift 14s ease infinite;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+      }
+
+      @keyframes bgShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+      }
+
+      /* ---------------------- INTRO SCREEN ---------------------- */
+      #introScreen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+
+          background: rgba(0, 0, 0, 0.45);
+          backdrop-filter: blur(8px);
+          z-index: 9999;
+
+          animation: fadeIn 1.4s ease;
+      }
+
+      #introText {
+          font-size: 3em;
+          max-width: 85%;
+          line-height: 1.2em;
+          font-weight: 700;
+
+          background: linear-gradient(90deg, #ff82ff, #ffd6ff, #d57cff);
+          -webkit-background-clip: text;
+          color: transparent;
+
+          text-shadow: 0 0 25px rgba(255, 150, 255, 0.6);
+          margin-bottom: 40px;
+
+          animation: floatIntro 3s ease-in-out infinite;
+      }
+
+      @keyframes floatIntro {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0); }
+      }
+
+      #introButton {
+          font-size: 1.8em;
+          padding: 18px 40px;
+          border-radius: 50px;
+          border: none;
+          cursor: pointer;
+
+          background: linear-gradient(135deg, #ff00c8, #9900ff);
+          color: white;
+          box-shadow: 0 0 20px rgba(255, 0, 200, 0.8);
+          transition: 0.3s ease;
+      }
+
+      #introButton:hover {
+          transform: scale(1.08);
+          box-shadow: 0 0 32px rgba(255, 0, 200, 1);
+      }
+
+      /* ---------------------- FLOATING PARTICLES ---------------------- */
+      .particle {
+          position: fixed;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.7);
+          box-shadow: 0 0 8px white;
+          animation: floatUp 6s linear infinite;
+          opacity: 0.7;
+      }
+
+      @keyframes floatUp {
+          from { transform: translateY(100vh) scale(0.6); opacity: 0; }
+          20% { opacity: 1; }
+          to { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+      }
+
+      /* ---------------------- MAIN CONTAINER (HIDDEN INITIALLY) ---------------------- */
+      #container {
+          display: none;
+          width: 90%;
+          max-width: 650px;
+          text-align: center;
+          padding: 30px;
+          border-radius: 25px;
+
+          backdrop-filter: blur(18px);
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 0 25px rgba(255, 0, 150, 0.35);
+
+          animation: fadeIn 2s ease;
+          z-index: 10;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+
+      /* ---------------------- EVERYTHING ELSE IS YOUR ORIGINAL CODE ---------------------- */
+
+      .message { font-size: 2.3em; font-weight: 600; opacity: 0; display: none;
+          background: linear-gradient(90deg, #ff79c6, #ffb3e6, #d57cff);
+          -webkit-background-clip: text; color: transparent;
+          text-shadow: 0 0 15px rgba(255, 150, 255, 0.4);
+          transition: opacity 1s ease;
+      }
+      .visible { display: block; opacity: 1; animation: floatMsg 3s ease infinite; }
+
+      @keyframes floatMsg { 0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)} }
+
+      #questionSection { display: none; }
+      #questionText { font-size:2em;margin-bottom:15px;background:linear-gradient(45deg,#ff87ff,#b28cff);-webkit-background-clip:text;color:transparent;text-shadow:0 0 10px rgba(190,100,255,0.25);}
+      #answerInput { font-size:1.5em;padding:10px 15px;width:160px;text-align:center;border-radius:12px;border:none;background:rgba(255,255,255,0.25);color:white;box-shadow:0 0 10px rgba(255,200,255,0.4); }
+
+      .progress-bar-container{height:20px;width:100%;border-radius:20px;background:rgba(255,255,255,0.25);overflow:hidden;margin:25px 0;}
+      .progress-bar{height:100%;width:100%;background:linear-gradient(90deg,#ff00c8,#8f00ff);box-shadow:0 0 15px rgba(255,0,200,0.7);transition:width 2s linear;}
+
+      #scoreboard{position:fixed;top:20px;right:20px;background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);padding:12px 25px;border-radius:12px;font-size:1.6em;color:#ffd6ff;text-shadow:0 0 8px magenta;box-shadow:0 0 14px rgba(255,0,150,0.4);display:none;}
+
+      #finalScoreboard{display:none;font-size:2.3em;margin-top:20px;background:linear-gradient(90deg,#ff79c6,#ffb3e6,#d57cff);-webkit-background-clip:text;color:transparent;text-shadow:0 0 10px rgba(255,150,255,0.4);}
+      #congratsMsg{display:none;font-size:2.4em;margin-top:10px;color:#ffa8ff;text-shadow:0 0 20px #ff74d9;animation:pulse 2s infinite ease;}
+
+      @keyframes pulse{0%{transform:scale(1);opacity:.7}50%{transform:scale(1.08);opacity:1}100%{transform:scale(1);opacity:.7}}
+
+      #endButton{display:none;margin-top:20px;font-size:1.4em;padding:12px 30px;border:none;border-radius:40px;cursor:pointer;background:linear-gradient(135deg,#ff00a2,#a600ff);color:white;box-shadow:0 0 18px rgba(255,0,180,.5);transition:.4s ease;}
+      #endButton:hover{transform:scale(1.07);box-shadow:0 0 25px rgba(255,0,220,.7);}
+
+      #finalVideo{position:absolute;top:72%;left:21%;transform:translate(-50%,-50%) scale(0.8);width:980px;height:500px;border-radius:12px;display:none;box-shadow:none;background:none;}
+
+  </style>
+</head>
+
+<body>
+
+<!-- INTRO SCREEN -->
+<div id="introScreen">
+  <div id="introText">
+    WE all agree that Samarth is literally the most amazing awesome diva ever<br>
+    and WE all will make it our life's mission to find him a baddie RIGHT NOW
+  </div>
+
+  <button id="introButton">YESSSSSYES YES YES YESSSEESSESESYESYEYS</button>
+
+  <audio id="introSong" src="cbto.mp3"></audio>
+</div>
+
+<!-- FLOATING PARTICLES -->
+<script>
+  for (let i = 0; i < 35; i++) {
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDelay = Math.random() * 6 + "s";
+    document.body.appendChild(p);
+  }
+</script>
+
+<!-- ORIGINAL SITE (HIDDEN INITIALLY) -->
+<div id="container">
+  <div id="message1" class="message">✨ There is ONE. LAST. TEST. ✨</div>
+  <div id="message2" class="message">ITS GONNA BE THE TOUGHEST ONE YET. and you'll only move ahead if you get ALL OF THEM CORRECT</div>
+  <div id="message3" class="message">Its gonna be math btw. BEGIN</div>
+
+  <div id="questionSection">
+    <div id="questionText"></div>
+    <input type="number" id="answerInput" placeholder="Enter answer" autocomplete="off" />
+    <div class="progress-bar-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+  </div>
+
+  <div id="scoreboard">Score: <span id="score">0</span>/3</div>
+  <div id="finalScoreboard"></div>
+  <div id="congratsMsg">🌟 Congratulations 🌟</div>
+  <button id="endButton">Proceed</button>
+</div>
+
+<!-- VIDEO -->
+<video id="finalVideo" muted playsinline>
+  <source src="animation.mp4" type="video/mp4" />
+</video>
+
+<script>
+  /* ---------------- INTRO BUTTON LOGIC ------------------ */
+  document.getElementById("introButton").addEventListener("click", () => {
+    const song = document.getElementById("introSong");
+    song.play();
+
+    document.getElementById("introScreen").style.opacity = "0";
+    setTimeout(() => {
+      document.getElementById("introScreen").style.display = "none";
+      document.getElementById("container").style.display = "block";
+      showMessagesSequentially();
+    }, 800);
+  });
+
+  /* ---------------- ORIGINAL SCRIPT (unchanged except timing) ------------------ */
+
+  const messages = [
+    document.getElementById('message1'),
+    document.getElementById('message2'),
+    document.getElementById('message3'),
+  ];
+
+  const questionSection = document.getElementById('questionSection');
+  const questionText = document.getElementById('questionText');
+  const answerInput = document.getElementById('answerInput');
+  const progressBar = document.getElementById('progressBar');
+  const scoreboard = document.getElementById('scoreboard');
+  const scoreSpan = document.getElementById('score');
+  const finalScoreboard = document.getElementById('finalScoreboard');
+  const congratsMsg = document.getElementById('congratsMsg');
+  const endButton = document.getElementById('endButton');
+  endButton.addEventListener("click", () => {
+    window.location.href = "final.html";
+  });
+  const finalVideo = document.getElementById('finalVideo');
+
+  const questions = [
+    { q: "What is 34643 * 647?", a: 21 },
+    { q: "What is 93464 * 3344?", a: 27 },
+    { q: "What is 8568 * 36646?", a: 15 }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+  let timerId;
+
+  function fadeIn(el) {
+    el.style.display = 'block';
+    setTimeout(() => el.classList.add('visible'), 20);
+  }
+
+  function fadeOut(el) {
+    el.classList.remove('visible');
+    setTimeout(() => el.style.display = 'none', 1000);
+  }
+
+  function showMessagesSequentially(index = 0) {
+    if (index >= messages.length) {
+      setTimeout(() => {
+        scoreboard.style.display = 'block';
+        startQuestion();
+      }, 500);
+      return;
+    }
+
+    fadeIn(messages[index]);
+    setTimeout(() => {
+      fadeOut(messages[index]);
+      setTimeout(() => showMessagesSequentially(index + 1), 1000);
+    }, 2600);
+  }
+
+  function startQuestion() {
+    questionSection.style.display = 'block';
+    answerInput.value = '';
+    answerInput.focus();
+    showQuestion(currentQuestion);
+  }
+
+  function showQuestion(index) {
+    if (index >= questions.length) {
+      questionSection.style.display = 'none';
+      scoreboard.style.display = 'none';
+      showFinalScore();
+      return;
+    }
+
+    questionText.textContent = questions[index].q;
+    answerInput.value = '';
+
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '100%';
+    void progressBar.offsetWidth;
+    progressBar.style.transition = 'width 2s linear';
+    progressBar.style.width = '0%';
+
+    if (timerId) clearTimeout(timerId);
+
+    timerId = setTimeout(() => {
+      currentQuestion++;
+      scoreSpan.textContent = score;
+      showQuestion(currentQuestion);
+    }, 2000);
+  }
+
+  function showFinalScore() {
+    finalScoreboard.style.display = 'block';
+    finalScoreboard.textContent = `Your final score: 0/3 👎👎👎`;
+
+    setTimeout(showVideo, 10000);
+
+    setTimeout(() => {
+      finalScoreboard.textContent = `Your final score: 3/3`;
+      congratsMsg.style.display = 'block';
+      endButton.style.display = 'inline-block';
+    }, 32120);
+  }
+
+  function showVideo() {
+    finalVideo.style.display = 'block';
+    finalVideo.currentTime = 0;
+    finalVideo.play();
+    finalVideo.onended = () => finalVideo.style.display = 'none';
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amrita's Thicc Baddie Site</title>
+  <link rel="stylesheet" href="amritawebsite2.5.css" />
+
+  <style>
+      /* 🌸 AESTHETIC INTRO SCREEN 🌸 */
+      #introScreen {
+          position: fixed;
+          inset: 0;
+          background: linear-gradient(135deg, #ffd3e0, #ffb4cc, #f7a9c4, #d687ff);
+          background-size: 300% 300%;
+          animation: bgShift 12s ease infinite;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+
+          z-index: 9999;
+          opacity: 1;
+          transition: opacity 1.2s ease;
+      }
+
+      @keyframes bgShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+      }
+
+      .introContent {
+          padding: 40px;
+          border-radius: 30px;
+          backdrop-filter: blur(18px);
+          background: rgba(255, 255, 255, 0.25);
+          box-shadow: 0 15px 40px rgba(255, 155, 210, 0.4);
+          animation: fadeIn 1.8s ease;
+      }
+
+      .introTitle {
+          font-family: "Poppins", sans-serif;
+          font-size: 2.6rem;
+          font-weight: 600;
+          line-height: 1.3;
+          color: #ffffff;
+          text-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+          margin-bottom: 30px;
+      }
+
+      #introButton {
+          background: linear-gradient(135deg, #ff69b4, #ff87c8);
+          border: none;
+          padding: 16px 40px;
+          border-radius: 40px;
+          font-size: 1.1rem;
+          color: white;
+          cursor: pointer;
+
+          box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+          transition: 0.3s ease;
+      }
+
+      #introButton:hover {
+          transform: scale(1.08);
+          box-shadow: 0 10px 30px rgba(255, 105, 180, 0.7);
+      }
+
+      .hideIntro {
+          opacity: 0 !important;
+          pointer-events: none;
+      }
+
+      .orb {
+          position: absolute;
+          width: 220px;
+          height: 220px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255,255,255,0.55), rgba(255,255,255,0));
+          filter: blur(20px);
+          opacity: 0.75;
+          animation: float 7s ease-in-out infinite;
+      }
+
+      .orb1 { top: 10%; left: 15%; animation-delay: 0s; }
+      .orb2 { top: 65%; right: 10%; animation-delay: 2s; }
+      .orb3 { bottom: 12%; left: 40%; animation-delay: 4s; }
+
+      @keyframes float {
+          0% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-25px) scale(1.1); }
+          100% { transform: translateY(0px) scale(1); }
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(15px) scale(0.97); }
+          to   { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      /* Hide real website initially */
+      #realWebsite {
+          opacity: 0;
+          display: none;
+          transition: opacity 1s ease;
+      }
+
+      /* ====== ORIGINAL WEBSITE STYLES ====== */
+      input[type="checkbox"] { display: none; }
+      #sam{ position: absolute; right: 40%; top: 50%; padding: 15px 15px; font-size: 18px; cursor: pointer; }
+      #runAwayBtn { position: absolute; top: 54%; left: 30%; color: white;background: #0D1127; padding: 1rem 3rem; border-radius: 5rem; border: 5px solid #5978F3; font-size: 1.2rem; line-height: 1em; letter-spacing: 0.075em; transition: background 0.3s; cursor: pointer; z-index: 1; transform: translate(-50%, -50%); }
+      #flashImage { position: fixed; top: 50%; left: 50%; width: 300px; height: 200px; opacity: 0; pointer-events: none; transform: translate(-50%, -50%); transition: opacity 0.5s ease; z-index: 1000; }
+      .voltage-button { position: absolute; top: 50%; right: 30%; display: inline-block; }
+      .voltage-button button { color: white; background: #0D1127; padding: 1rem 3rem; border-radius: 5rem; border: 5px solid #5978F3; font-size: 1.2rem; line-height: 1em; letter-spacing: 0.075em; transition: background 0.3s; cursor: pointer; position: relative; z-index: 1; }
+      .voltage-button button:hover { background: #0F1C53; }
+      .voltage-button svg { display: block; position: absolute; top: -0.75em; left: -0.25em; width: calc(100% + 0.5em); height: calc(100% + 1.5em); pointer-events: none; opacity: 0; transition: opacity 0.4s; transition-delay: 0.1s; z-index: 0; }
+      .voltage-button button:hover + svg, .voltage-button button:hover + svg + .dots { opacity: 1; }
+      .voltage-button .dots { opacity: 0; transition: opacity 0.3s; transition-delay: 0.4s; position: absolute; width: 100%; height: 100%; pointer-events: none; top: 0; left: 0; }
+      .voltage-button .dots .dot { width: 1rem; height: 1rem; background: white; border-radius: 100%; position: absolute; opacity: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ======================= INTRO SCREEN ======================= -->
+<div id="introScreen">
+  <div class="introContent">
+    <h1 class="introTitle">Do you agree to get me a thicc baddie? 💗</h1>
+    <button id="introButton">
+      Yes, I, Amrita Jayamon, agree to find you a thicc baddie RIGHT NOW 💞
+    </button>
+  </div>
+
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- Song to play when agreeing -->
+<audio id="introSong" src="jeremih.mp3" preload="auto"></audio>
+
+<!-- ======================= ORIGINAL WEBSITE ======================= -->
+<div id="realWebsite">
+
+  <input type="checkbox" id="toggle3" />
+  <input type="checkbox" id="toggle4" />
+
+  <div class="step3">
+    <h2>𝓑𝓬𝓸𝔃 𝓲 𝓪𝓶 𝓵𝓲𝓽𝓮𝓻𝓪𝓵𝓵𝔂 𝓼𝓸 𝓷𝓲𝓬𝓮, 𝓮𝔃 𝓺𝓾𝓮𝓼𝓽𝓲𝓸𝓷 𝓯𝓸𝓻 𝓾 𝓯𝓲𝓻𝓼𝓽 𝓸𝓴𝓲</h2>
+    <video id="video1" autoplay loop muted playsinline oncontextmenu="return false;">
+      <source src="sam2website2.mp4" type="video/mp4" />
+    </video>
+    <img class="crown" src="https://media.tenor.com/r95qVGJtubEAAAAm/crown.webp"/>
+    <video id="video2" autoplay loop muted playsinline oncontextmenu="return false;">
+      <source src="amrita_yap_final.mp4" type="video/mp4" />
+    </video>
+    <img class="arrow1" src="https://media.tenor.com/-Em9dXc-4PIAAAAm/good-night.webp"/>
+    <img class="arrow2" src="https://media.tenor.com/-Em9dXc-4PIAAAAm/good-night.webp"/>
+    <img class="jihyo" src="https://media1.tenor.com/m/5Kl95MfFJuIAAAAd/twice-kpop.gif"/>
+    <label for="toggle3" class="btn3">Thank u i love u</label>
+    <img class="ragebait" src="https://media.tenor.com/4f9V2hM7aWoAAAA1/rage-bait-ragebait.webp"/>
+  </div>
+
+  <div class="step4" id="before">
+    <h3>
+      Who is the litearlly gratest person ever like wtf how is HE so amazing
+      its actually kinda scary how incredible HE is like WE are all so fortunate
+      to have been graced by HIS presence
+    </h3>
+
+    <button id="runAwayBtn">Amrita😕</button>
+
+    <img id="flashImage" src="https://i.pinimg.com/736x/4c/62/25/4c6225863c7cd8f363aaa0702c4e87e5.jpg" alt="Judgy Cat"/>
+    <audio id="sound" src="vineboomsound.mp3" preload="auto"></audio>
+
+    <div class="voltage-button">
+      <a href="amritawebsite3.html" style="text-decoration:none;">
+        <button class="btn4">Samarth👑</button>
+      </a>
+      <svg viewBox="0 0 180 60" fill="none">
+        <path class="line-1" d="M5 5 H175 V55 H5 Z" stroke="#f6de8d" stroke-width="4"/>
+        <path class="line-2" d="M5 5 H175 V55 H5 Z" stroke="#6bfeff" stroke-width="2"/>
+      </svg>
+      <div class="dots">
+        <div class="dot dot-1"></div>
+        <div class="dot dot-2"></div>
+        <div class="dot dot-3"></div>
+        <div class="dot dot-4"></div>
+        <div class="dot dot-5"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= SCRIPTS ======================= -->
+<script>
+  const introScreen = document.getElementById("introScreen");
+  const introButton = document.getElementById("introButton");
+  const introSong = document.getElementById("introSong");
+  const realWebsite = document.getElementById("realWebsite");
+
+  introSong.volume = 0.35; // adjust volume
+
+  introButton.addEventListener("click", () => {
+    introSong.play();
+
+    introScreen.classList.add("hideIntro");
+
+    setTimeout(() => {
+      introScreen.remove();
+      realWebsite.style.display = "block";
+      requestAnimationFrame(() => {
+        realWebsite.style.opacity = "1";
+      });
+    }, 1200);
+  });
+
+  // Runaway button script
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("runAwayBtn");
+    const image = document.getElementById("flashImage");
+    const sound = document.getElementById("sound");
+    const threshold = 120;
+    let isRunning = false;
+    let audioUnlocked = false;
+
+    function unlockAudio() {
+      sound.play().then(() => { sound.pause(); sound.currentTime = 0; audioUnlocked = true; }).catch(() => {});
+      document.body.removeEventListener("click", unlockAudio);
+    }
+    document.body.addEventListener("click", unlockAudio);
+
+    document.addEventListener("mousemove", (e) => {
+      if (!audioUnlocked) return;
+      const rect = button.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
+      const dist = Math.hypot(e.clientX - btnX, e.clientY - btnY);
+      if (dist < threshold && !isRunning) runAway();
+    });
+
+    function runAway() {
+      isRunning = true;
+      const maxX = window.innerWidth - button.offsetWidth;
+      const maxY = window.innerHeight - button.offsetHeight;
+      let newX = Math.random() * maxX;
+      let newY = Math.random() * maxY;
+      button.style.left = `${newX}px`;
+      button.style.top = `${newY}px`;
+      button.style.transform = "none";
+      image.style.opacity = "0.9";
+      sound.currentTime = 0;
+      sound.play().catch(() => {});
+      setTimeout(() => { image.style.opacity = "0"; }, 300);
+      setTimeout(() => { isRunning = false; }, 10);
+    }
+  });
+</script>
+</body>
+</html>

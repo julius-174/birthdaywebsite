@@ -1,0 +1,186 @@
+body{
+    margin: 0;
+    height: 100vh;
+    background-image: url("collagethingytop.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+/* #toggle3, #toggle4 {
+    display: none;
+} */
+
+h2{
+    position: absolute;
+    left: 26.4%;
+    width: 1000px;
+    font-size: 35px;
+    font-weight: bolder;
+    font-family: "MV Boli", serif;
+    color: black;
+    text-shadow:
+            -2px -2px 0 yellow,
+            2px -2px 0 yellow,
+            -2px  2px 0 white,
+            2px  2px 0 white;
+}
+#video1{
+    position: absolute;
+    top: 55px;
+    left: 100px;
+    width: 260px;
+    height: 420px;
+    border-radius: 20px;
+}
+.arrow1{
+    position: absolute;
+    top: 600px;
+    width: 400px;
+    height: 130px;
+    transform: scaleX(-1) rotate(14deg);
+    left: 200px;
+}
+.arrow2{
+    position: absolute;
+    top: 500px;
+    width: 400px;
+    height: 130px;
+    right: 200px;
+}
+.jihyo{
+    position: absolute;
+    top: 380px;
+    left: 400px;
+    width: 200px;
+    border-radius: 20px;
+    height: 200px;
+}
+.btn3 {
+    position: absolute;
+    left: 42.3%;
+    top: 270px;
+    display: inline-block;
+    padding: 10px 15px;
+    border: 2px solid black;
+    font-size: 30px;
+    background: darkslateblue;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-family: sans-serif;
+}
+.crown{
+    position: absolute;
+    top: 0px;
+    width: 180px;
+    height: 160px;
+    left: 130px;
+}
+#video2{
+    position: absolute;
+    top: 55px;
+    border-radius: 20px;
+    right: 100px;
+    width: 260px;
+    height: 420px;
+}
+.ragebait{
+    position: absolute;
+    bottom: 100px;
+    right: 42%;
+    width: 300px;
+    height: 290px;
+    transform: scaleX(-1);
+}
+h3{
+    position: absolute;
+    left: 30%;
+    width: 800px;
+    font-weight: bolder;
+    font-family: "calibri", serif;
+    color: black;
+    text-shadow:
+            -2px -2px 0 yellow,
+            2px -2px 0 yellow,
+            -2px  2px 0 white,
+            2px  2px 0 white;
+    font-size: 34px;
+}
+h4{
+    position: absolute;
+    left: 34%;
+    width: 1000px;
+    font-weight: bolder;
+    font-family: "MV Boli", serif;
+    font-size: 29px;
+}
+#btn4 {
+    position: absolute;
+    left: 25%;
+    top: 300px;
+    display: inline-block;
+    padding: 10px 15px;
+    background: steelblue;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-family: sans-serif;
+}
+
+
+/*
+.step3, .step4, .step5 {
+    display: none;
+}*/
+
+
+.step4, .step5 {
+    display: none;
+}
+
+.step5.visible {
+    display: block;
+}
+
+/* STEP 1: Show .step2 when toggle1 is checked */
+
+/*#toggle1:checked ~ .step2 {
+    display: block;
+}
+
+ STEP 2: Show .step3, hide earlier
+#toggle2:checked ~ .step2 {
+    display: none;
+}
+#toggle2:checked ~ .step3 {
+    display: block;
+}
+*/
+/* STEP 3: Show .step4, hide earlier */
+#toggle3:checked ~ .step3 {
+    display: none;
+}
+#toggle3:checked ~ .step4 {
+    display: block;
+}
+
+#toggle4:checked ~ .step4 {
+    display: none;
+}
+
+#ghostImage {
+    position: fixed;      /* Fix position relative to viewport */
+    left: 38%;           /* Change this to your desired fixed X position */
+    top: 32%;            /* Change this to your desired fixed Y position */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    width: 400px;         /* Adjust size as needed */
+    height: 300px;
+    z-index: 1000;        /* Make sure it appears on top */
+}

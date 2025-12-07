@@ -1,0 +1,98 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: url('https://t3.ftcdn.net/jpg/02/94/45/92/360_F_294459225_deOinf0uW2Ci6osQzwJAX9j67sIZvTwP.jpg') no-repeat center center;
+    background-size: cover;
+    background-color: white; /* fallback color */
+}
+
+#container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    object-fit: contain;
+    opacity: 1;
+    transition: opacity 3s ease;
+    z-index: 2;
+    display: none;
+
+    /* Optional mask */
+    -webkit-mask-image:
+            linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-composite: intersect;
+    mask-image:
+            linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-composite: intersect;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+#bgFade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 3s ease;
+}
+
+#bgFade.show {
+    opacity: 1;
+}
+
+#endButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 1.5em;
+    background-color: #f76c6c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 20;
+    display: none;  /* Hidden initially */
+}
+
+#endButton:hover {
+    background-color: #f54242;
+}
+
+
+#startOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    z-index: 10;
+    cursor: pointer;
+}

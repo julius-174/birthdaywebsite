@@ -1,0 +1,295 @@
+body{
+    background-image: url("https://pbs.twimg.com/media/FXjaHApUUAApJuP?format=jpg&name=4096x4096");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    animation: gradientBG 20s ease infinite;
+}
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+
+h1{
+    position: absolute;
+    font-size: 50px;
+    left: 35%;
+    top: 0.6%;
+    font-family: cursive;
+    color: white;
+}
+
+h2{
+    display: none;
+    width: 670px;
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    font-size: 28px;
+    font-weight: bolder;
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    border-radius: 15px;
+    padding: 5px;
+    background-color: lightcoral;
+}
+
+h3{
+    display: none;
+    width: 670px;
+    position: absolute;
+    left: 10px;
+    top: 280px;
+    font-size: 28px;
+    font-weight: bolder;
+    color: black;
+    border-radius: 15px;
+    padding: 5px;
+    background-color: lightcoral;
+}
+
+h4{
+    display: none;
+    width: 670px;
+    position: absolute;
+    left: 10px;
+    top: 430px;
+    font-size: 28px;
+    font-weight: bolder;
+    color: black;
+    border-radius: 15px;
+    padding: 5px;
+    background-color: lightcoral;
+}
+
+h5{
+    display: none;
+    width: 380px;
+    position: absolute;
+    right: 10px;
+    top: 100px;
+    font-size: 28px;
+    font-weight: bolder;
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    border-radius: 15px;
+    padding: 5px;
+    background-color: lightcoral;
+}
+
+h6{
+    display: none;
+    width: 250px;
+    position: absolute;
+    right: 10px;
+    top: 420px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.yeskingbutton{
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 360px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ff4500, 0 0 20px #ff6347, 0 0 30px #ff0000;
+    transition: all 0.3s ease-in-out;
+    animation: blaze 1s infinite alternate;
+}
+@keyframes blaze {
+    0% {
+        box-shadow: 0 0 10px #ff4500, 0 0 20px #ff6347, 0 0 30px #ff0000;
+    }
+    100% {
+        box-shadow: 0 0 20px #ff6347, 0 0 30px #ff0000, 0 0 40px #ff8c00;
+    }
+}
+.yeskingbutton:hover {
+    transform: scale(1.05);
+    background-color: #ff6347;
+}
+
+#reveal-toggle1 {
+    display: none;
+}
+#reveal-toggle2 {
+    display: none;
+}
+#reveal-toggle3 {
+    display: none;
+}
+#reveal-toggle4 {
+    display: none;
+}
+
+.button1 {
+    display: inline-block;
+    padding: 12px 12px;
+    background-color: #ff5722;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.button2 {
+    display: none;
+    position: absolute;
+    left: 120px;
+    top: 8px;
+    padding: 12px 12px;
+    background-color: #ff5722;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.button3 {
+    display: none;
+    position: absolute;
+    left: 300px;
+    top: 8px;
+    padding: 12px 12px;
+    background-color: #ff5722;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.button4 {
+    display: none;
+    position: absolute;
+    left: 500px;
+    top: 8px;
+    padding: 12px 12px;
+    background-color: #ff5722;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#reveal-toggle1:checked ~ .secret1 {
+    display: block;
+}
+#reveal-toggle1:checked ~ .button2 {
+    display: block;
+}
+
+#reveal-toggle2:checked ~ .secret2 {
+    display: block;
+}
+#reveal-toggle2:checked ~ .side1 {
+    display: block;
+}
+
+#reveal-toggle2:checked ~ .button3 {
+    display: block;
+}
+
+#reveal-toggle3:checked ~ .secret3 {
+    display: block;
+}
+#reveal-toggle3:checked ~ .side1 {
+    display: none;
+}
+#reveal-toggle3:checked ~ .side2 {
+    display: block;
+}
+#reveal-toggle3:checked ~ .button4 {
+    display: block;
+}
+
+#reveal-toggle4:checked ~ .secret4 {
+    display: block;
+}
+#reveal-toggle4:checked ~ .side2 {
+    display: none;
+}
+
+#reveal-toggle4:checked ~ .yeskingbutton {
+    display: block;
+}
+#reveal-toggle4:checked ~ .secret5 {
+    display: block;
+}
+
+
+.side1{
+    display: none;
+    position: absolute;
+    width: 100px;
+    left: 0px;
+    bottom: 90px;
+}
+.side2{
+    display: none;
+    position: absolute;
+    width: 100px;
+    right: 0px;
+    top: 350px;
+}
+
+
+
+#sam1, #sam2, #sam3 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    animation-fill-mode: forwards;
+}
+
+/* When toggle3 is checked, fade in the image */
+#reveal-toggle2:checked ~ #sam1 {
+    pointer-events: auto;
+    animation: fadeInOut 4.5s ease forwards;
+}
+#reveal-toggle3:checked ~ #sam2 {
+    pointer-events: auto;
+    animation: fadeInOut 4.5s ease forwards;
+}
+#reveal-toggle4:checked ~ #sam3 {
+    pointer-events: auto;
+    animation: fadeInOut 4.5s ease forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+

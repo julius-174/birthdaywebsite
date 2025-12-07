@@ -1,0 +1,127 @@
+body {
+    overflow: hidden;
+}
+
+.loginbg1{
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    left: 0%;
+    width: 60%;
+    filter: brightness(1.15);
+
+}
+
+.walk{
+    position: absolute;
+    bottom: 50%;
+    width: 60px;
+    height: 60px;
+    z-index: 9999;
+}
+
+.dance1{
+    position: absolute;
+    bottom: 20%;
+    left: 14%;
+    width: 140px;
+    height: 140px;
+    z-index: 9999;
+}
+
+.dance2{
+    position: absolute;
+    bottom: 20%;
+    left: 60%;
+    width: 140px;
+    height: 140px;
+    z-index: 9999;
+}
+
+.hearts{
+    position: absolute;
+    top: 30%;
+    left: 23%;
+}
+.hearts1{
+    position: absolute;
+    top: 24%;
+    right: 15%;
+}
+
+.loginbg2{
+    position: absolute;
+    right: 0%;
+    top: 0px;
+    width: 50%;
+    height: 100%;
+
+}
+
+.enterpass{
+    position: absolute;
+    top: 15%;
+    left: 40%;
+    font-family: 'Bahnschrift', cursive;
+    color: #474aff; /* A bright color to grab attention */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
+    height: 50px;
+    width: 450px;
+    font-size: 50px;
+}
+.submit{
+    position:absolute;
+    left: 46.8%;
+    top: 50%;
+    height: 50px;
+    width: 110px;
+    background: linear-gradient(to bottom, #ffb6b9, #fae3d9);
+    border: 2px solid #f8a5c2;
+    border-radius: 12px;
+    padding: 12px 25px;
+    font-size: 18px;
+    box-shadow: 0 5px 0 #f8a5c2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #222;
+}
+.submit:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #f8a5c2;
+}
+.password{
+    position:absolute;
+    left: 41.6%;
+    top: 35%;
+    height: 40px;
+    width: 250px;
+    font-size: 20px;
+    background: linear-gradient(to bottom, #ffb6b9, #fae3d9);
+    border: 2px solid #f8a5c2;
+    border-radius: 12px;
+    padding: 12px 25px;
+    box-shadow: 0 5px 0 #f8a5c2;
+    cursor: text;
+    transition: all 0.2s ease;
+    color: #222;
+}
+.password:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #f8a5c2;
+}
+.error {
+    color: red;
+    margin-top: 10px;
+}
+.input-wrapper img{
+    display: none;
+    position: absolute;
+    height: 75px;
+    width: 75px;
+    top: 27%;
+    left: 48%;
+}
+.input-wrapper:hover img{
+    display: block;
+}

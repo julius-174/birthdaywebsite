@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WEBSITE</title>
+  <link rel="stylesheet" href="amritawebsite2REAL.css" />
+  <style>
+      /* ================= AESTHETIC TERMS PAGE ================= */
+      #termsScreen {
+          position: fixed;
+          inset: 0;
+          background: linear-gradient(135deg, #fff0f5, #ffe6f0);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+          opacity: 1;
+          transition: opacity 1s ease;
+          font-family: 'Comic Sans MS', cursive, sans-serif;
+          text-align: center;
+      }
+
+      #termsBox {
+          background: rgba(255,255,255,0.95);
+          border-radius: 20px;
+          padding: 40px;
+          max-width: 500px;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+          animation: fadeInBox 1s ease;
+      }
+
+      @keyframes fadeInBox {
+          from { transform: scale(0.9); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+      }
+
+      #termsBox h2 {
+          color: #d63447;
+          font-size: 28px;
+          margin-bottom: 20px;
+          text-shadow: 2px 2px #ffd400;
+      }
+
+      #termsBox img {
+          max-width: 250px;
+          margin-bottom: 20px;
+          border-radius: 15px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+
+      #termsBox p {
+          font-size: 16px;
+          line-height: 1.5;
+          color: #333;
+          margin-bottom: 25px;
+      }
+
+      .agreeLabel {
+          display: inline-block;
+          background: #ff6f61;
+          color: white;
+          padding: 14px 30px;
+          font-size: 18px;
+          border-radius: 12px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          transition: all 0.3s ease;
+      }
+
+      .agreeLabel:hover {
+          background: #ff3b2e;
+          transform: scale(1.1);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      }
+
+      /* Hide actual content initially */
+      #actualContent {
+          display: none;
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+      }
+  </style>
+</head>
+
+<body>
+
+<!-- ✔ THE CONTROLLER CHECKBOX -->
+<input type="checkbox" id="agree">
+
+<!-- TERMS OVERLAY -->
+<div id="termsScreen">
+  <div id="termsBox">
+    <h2>Do you agree to the following Terms & Conditions?</h2>
+    <img id="termsImage" src="pic8.jpeg" alt="Funny Image">
+    <p>
+    </p>
+
+    <label class="agreeLabel">
+      <input type="checkbox" id="agreeCheck" style="display:none;">
+      ✔ I agree
+    </label>
+  </div>
+</div>
+
+<!-- REAL CONTENT -->
+<div id="actualContent">
+  <input type="checkbox" id="toggle2" />
+
+  <div class="step2" id="first">
+    <h1>Nvm i changed my mind u have to take a few tests first + i hate u</h1>
+    <img class="dancingrat" src="https://media.tenor.com/_AZJmhAry0gAAAAj/rat-dancing-meme.gif"/>
+    <p class="p1">LIVE AMRITA REACTION</p>
+    <img class="siren" src="https://media.tenor.com/tDau9a7i5hwAAAAj/alert-siren.gif"/>
+    <img class="liveamritareaction" src="liveamritareaction.jpeg"/>
+    <img class="surprisedamrita"/>
+    <img class="judgy" src="https://media1.tenor.com/m/6i2v1iqJEeIAAAAd/twice-meme-twice-jihyo.gif"/>
+    <img class="itachi" src="itachi_griddy.gif"/>
+    <img class="page2img1sam" src="page2img1sam.jpeg"/>
+
+    <label id="nottyBtn" for="toggle2" class="btn2" onclick="window.location.href='amritawebsite2.5.html'">
+      I'm so notty
+    </label>
+  </div>
+
+  <script>
+    const container = document.getElementById("first");
+    const colors = ["#FF4C4C", "#4CFF4C", "#4C4CFF", "#FFFF4C", "#FF4CFF"];
+    const circles = [];
+    const numCircles = 20;
+    const maxSize = 40;
+    const minSize = 10;
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createCircle() {
+      const circle = document.createElement("div");
+      circle.classList.add("circle");
+      const size = random(minSize, maxSize);
+      circle.style.width = size + "px";
+      circle.style.height = size + "px";
+      circle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      circle.style.left = random(0, window.innerWidth - size) + "px";
+      circle.style.top = random(0, window.innerHeight - size) + "px";
+      container.appendChild(circle);
+
+      return {
+        el: circle,
+        x: parseFloat(circle.style.left),
+        y: parseFloat(circle.style.top),
+        size,
+        vx: random(-2, 2),
+        vy: random(-2, 2),
+      };
+    }
+
+    for (let i = 0; i < numCircles; i++) circles.push(createCircle());
+
+    function animate() {
+      circles.forEach(c => {
+        c.x += c.vx;
+        c.y += c.vy;
+
+        if (c.x <= 0 || c.x + c.size >= container.clientWidth) c.vx *= -1;
+        if (c.y <= 0 || c.y + c.size >= container.clientHeight) c.vy *= -1;
+
+        c.el.style.left = c.x + "px";
+        c.el.style.top = c.y + "px";
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</div>
+
+<!-- ================== SONG ================== -->
+<audio id="song" src="glockinmyrari.mp3" preload="auto"></audio>
+
+<script>
+  const agreeCheck = document.getElementById('agreeCheck');
+  const termsScreen = document.getElementById('termsScreen');
+  const actualContent = document.getElementById('actualContent');
+  const song = document.getElementById('song');
+
+  // Set volume here (0.0 to 1.0)
+  song.volume = 0.3;
+
+  agreeCheck.addEventListener('change', function() {
+    // fade out terms overlay
+    termsScreen.style.opacity = 0;
+
+    // play song
+    song.play();
+
+    // after fade out, show main content
+    setTimeout(() => {
+      termsScreen.style.display = 'none';
+      actualContent.style.display = 'block';
+      setTimeout(() => { actualContent.style.opacity = 1; }, 50);
+    }, 1000);
+
+    // activate main page checkbox
+    document.getElementById('agree').checked = this.checked;
+  });
+</script>
+
+</body>
+</html>
