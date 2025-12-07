@@ -201,7 +201,6 @@
   introSong.volume = 0.35; // adjust volume
 
   introButton.addEventListener("click", () => {
-    introSong.play();
 
     introScreen.classList.add("hideIntro");
 
@@ -212,6 +211,7 @@
         realWebsite.style.opacity = "1";
       });
     }, 1200);
+    introSong.play().catch(() => {});
   });
 
   // Runaway button script
@@ -257,4 +257,5 @@
 </script>
 </body>
 </html>
+
 
