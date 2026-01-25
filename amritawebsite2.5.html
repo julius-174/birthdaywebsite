@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Im so nais na</title>
+  <title>Amrita's legally binding deal</title>
   <link rel="stylesheet" href="amritawebsite2.5.css" />
 
   <style>
@@ -201,6 +201,7 @@
   introSong.volume = 0.35; // adjust volume
 
   introButton.addEventListener("click", () => {
+    introSong.play();
 
     introScreen.classList.add("hideIntro");
 
@@ -211,7 +212,6 @@
         realWebsite.style.opacity = "1";
       });
     }, 1200);
-    introSong.play().catch(() => {});
   });
 
   // Runaway button script
@@ -257,5 +257,3 @@
 </script>
 </body>
 </html>
-
-
